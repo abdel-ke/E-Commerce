@@ -1,0 +1,31 @@
+{
+    "_id": "dcef6284-a12a-4156-8901-97a9a3866520",
+    "colName": "e-commerce",
+    "created": "2023-07-10T11:28:25.240Z",
+    "sortNum": 10000,
+    "folders": [
+        {
+            "_id": "788eea7d-de5d-4a27-9ea7-0237685d8e09",
+            "name": "store",
+            "containerId": "",
+            "created": "2023-07-10T11:28:41.087Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "1ac01c2c-cf0d-40a7-a62e-7cae3954582e",
+            "colId": "dcef6284-a12a-4156-8901-97a9a3866520",
+            "containerId": "788eea7d-de5d-4a27-9ea7-0237685d8e09",
+            "name": "GET",
+            "url": "http://localhost:3000/api/stores",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-10T11:28:45.995Z",
+            "modified": "2023-07-10T11:30:29.103Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
