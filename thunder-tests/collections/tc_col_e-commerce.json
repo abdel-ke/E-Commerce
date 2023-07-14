@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2023-07-10T11:28:41.087Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "3a46dab8-1f13-4220-9423-bd516989885e",
+            "name": "billboards",
+            "containerId": "",
+            "created": "2023-07-14T02:36:17.466Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -18,11 +25,25 @@
             "colId": "dcef6284-a12a-4156-8901-97a9a3866520",
             "containerId": "788eea7d-de5d-4a27-9ea7-0237685d8e09",
             "name": "GET",
-            "url": "http://localhost:3000/api/stores",
+            "url": "http://localhost:3000/api/7c0fd241-97a9-4277-9d0b-b64e9590fdc6/billboards",
             "method": "GET",
             "sortNum": 20000,
             "created": "2023-07-10T11:28:45.995Z",
-            "modified": "2023-07-10T11:30:29.103Z",
+            "modified": "2023-07-14T02:35:54.348Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9b24719e-0b0a-49cf-aa82-5fbbe25ba5c5",
+            "colId": "dcef6284-a12a-4156-8901-97a9a3866520",
+            "containerId": "3a46dab8-1f13-4220-9423-bd516989885e",
+            "name": "GET",
+            "url": "http://localhost:3000/api/7c0fd241-97a9-4277-9d0b-b64e9590fdc6/billboards/b45882b4-2d02-4a49-ae60-dbe722f50451",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-07-14T02:36:26.024Z",
+            "modified": "2023-07-14T02:39:58.860Z",
             "headers": [],
             "params": [],
             "tests": []
