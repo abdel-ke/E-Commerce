@@ -1,4 +1,3 @@
-import React from "react";
 import BillboardsClient from "./components/Client";
 import prismadb from "@/lib/prisma.db";
 import { BillboardColumn } from "./components/columns";

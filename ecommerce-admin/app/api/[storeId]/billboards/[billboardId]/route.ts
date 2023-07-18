@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request, { params }: { params: { billboardId: string } }) {
 	try {
-		if (!params.billboardId) return new NextResponse("BillboardId id is required", { status: 400 });
+		if (!params.billboardId) return new NextResponse("Billboard id is required", { status: 400 });
 		
 		const billboard = await prismadb.billboard.findUnique({
 			where: {
@@ -57,7 +57,7 @@ export async function DELETE(req: Request, { params }: { params: { storeId: stri
 		const { userId } = auth();
 
 		if (!userId) return new NextResponse("Unauthorized", { status: 401 });
-		if (!params.billboardId) return new NextResponse("BillboardId id is required", { status: 400 });
+		if (!params.billboardId) return new NextResponse("Billboard id is required", { status: 400 });
 		const storeByUserId = await prismadb.store.findFirst({
 			where: {
 				id: params.storeId,
