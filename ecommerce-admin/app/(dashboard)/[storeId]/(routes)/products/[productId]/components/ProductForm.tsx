@@ -61,7 +61,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, categories, colo
       : {
           name: "",
           images: [],
-          price: 0,
           categoryId: "",
           colorId: "",
           sizeId: "",
