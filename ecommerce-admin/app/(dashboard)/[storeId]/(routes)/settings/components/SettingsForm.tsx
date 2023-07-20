@@ -64,11 +64,11 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       toast.success("Store deleted.");
     } catch (error) {
       toast.error("Make sur you removed all products and categories first.");
-    } finally{
+    } finally {
       setLoading(false);
       setOpen(false);
     }
-  }
+  };
   return (
     <>
       <AlertModal isOpen={open} onClose={() => setOpen(false)} onConfirm={onDelete} loading={loading} />
@@ -85,7 +85,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           <Trash className="h-4 w-4" />
         </Button>
       </div>
-      <Separator className="my-4"/>
+      <Separator className="my-4" />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-ful">
           <div className="grid grid-cols-3 gap-8">
@@ -107,10 +107,8 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
             Save changes
           </Button>
         </form>
-        <Separator className="my-4"/>
-        <ApiAlert title="NEXT_PUBLIC_API_URL"
-        description={`${origin}/api/${params.storeId}`}
-         variant="admin"/>
+        <Separator className="my-4" />
+        <ApiAlert title="NEXT_PUBLIC_API_URL" description={`${origin}/api/${params.storeId}`} variant="admin" />
       </Form>
     </>
   );
