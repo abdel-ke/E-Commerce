@@ -14,28 +14,26 @@ const Summary = () => {
   const removeAll = UseCart((state) => state.removeAll);
 
   useEffect(() => {
-	if (searchParams.get("success")) {
-		toast.success("Payment completed.");
-		removeAll();
-	}
-	if (searchParams.get("canceled")) {
-		toast.error("Something went wrong.");
-	}
-  }, [searchParams, removeAll])
-
+    if (searchParams.get("success")) {
+      toast.success("Payment completed.");
+      removeAll();
+    }
+    if (searchParams.get("canceled")) {
+      toast.error("Something went wrong.");
+    }
+  }, [searchParams, removeAll]);
 
   const totalPrice = items.reduce((total, item) => {
-	return total + Number(item.price);
+    return total + Number(item.price);
   }, 0);
 
   const onCheckout = async () => {
-	const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-		productsId: items.map((item) => item.id),
-	});
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+      productIds: items.map((item) => item.id),
+    });
 
-
-	window.location = response.data.url;
-  }
+    window.location = response.data.url;
+  };
   return (
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
       <h2 className="text-lg font-medium text-gray-900">Order Summary</h2>
@@ -45,7 +43,9 @@ const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button onClick={onCheckout} className="w-full mt-6">Checkout</Button>
+      <Button disabled={items.length === 0} onClick={onCheckout} className="w-full mt-6">
+        Checkout
+      </Button>
     </div>
   );
 };

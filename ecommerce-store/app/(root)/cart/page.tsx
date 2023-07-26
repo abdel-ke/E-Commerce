@@ -7,12 +7,13 @@ import CartItem from "./components/CartItem";
 import Summary from "./components/Summary";
 
 const CartPage = () => {
-  const cart = UseCart();
   const [isMounted, setIsMounted] = useState(false);
-
+  const cart = UseCart();
+  
   useEffect(() => {
     setIsMounted(true);
   }, []);
+  
   if (!isMounted) return null;
   return (
     <div className="bg-white">

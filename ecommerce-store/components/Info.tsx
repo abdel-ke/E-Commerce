@@ -3,11 +3,18 @@
 import { Product } from "@/types";
 import Currency from "./ui/Currency";
 import Button from "./ui/Button";
+import UseCart from "@/hooks/UseCart";
 
 interface InfoProps {
   data: Product;
 }
 const Info = ({ data }: InfoProps) => {
+  const cart = UseCart();
+
+  const onAddToCart = () => {
+     cart.addItem(data);
+  }
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
@@ -29,7 +36,7 @@ const Info = ({ data }: InfoProps) => {
           <div className="h-6 w-6 rounded-full border border-gray-600" style={{ backgroundColor: data?.color.value }} />
         </div>
 		<div className="mt-10 flex items-center gap-x-3">
-			<Button className="flex items-center gap-x-2">
+			<Button onClick={onAddToCart} className="flex items-center gap-x-2">
 				Add To Cart
 			</Button>
 		</div>
