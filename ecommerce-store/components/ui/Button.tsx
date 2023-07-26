@@ -2,11 +2,13 @@ import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, children, disabled, type = "button", ...props }, ref) => {
-  return (
-    <button
-      className={cn(
-        `
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, children, disabled, type = "button", ...props }, ref) => {
+    return (
+      <button
+        type={type}
+        className={cn(
+          `
 				w-auto
 				rounded-full
 				bg-black
@@ -20,17 +22,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, children
 				hover:opacity-75
 				transition
 				`,
-        className
-      )}
-	  disabled={disabled}
-      ref={ref}
-	  {...props}
-    >
-      {children}
-    </button>
-  );
-});
+          disabled && "opacity-75 cursor-not-allowed",
+          className
+        )}
+        disabled={disabled}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
 
-// Button.displayName = "Button";
+Button.displayName = "Button";
 
 export default Button;
