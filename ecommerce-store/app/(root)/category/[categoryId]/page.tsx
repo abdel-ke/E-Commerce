@@ -14,18 +14,18 @@ export const revalidate = 0;
 interface CategoryPageProps {
   params: {
     categoryId: string;
-  };
-  searchParam: {
+  },
+  searchParams: {
     colorId: string;
     sizeId: string;
-  };
+  }
 }
 
-const CategoryPage = async ({ params, searchParam }: CategoryPageProps) => {
+const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
   const products = await getProducts({
     categoryId: params.categoryId,
-    colorId: searchParam?.colorId,
-    sizeId: searchParam?.sizeId,
+    colorId: searchParams?.colorId,
+    sizeId: searchParams?.sizeId,
   });
   const sizes = await getSizes();
   const colors = await getColors();
