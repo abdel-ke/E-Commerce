@@ -28,9 +28,9 @@ const BillboardsClient: React.FC<BillBoardClientProps> = ({data}) => {
       </div>
 	  <Separator />
     <DataTable columns={columns} data={data} searchKey="label"/>
-    <Heading title="API" description="API calls for Billboards"/>
-    <Separator/>
-    <ApiList entityIdName="billboards" entityName="billboardId"/>
+    {/* <Heading title="API" description="API calls for Billboards"/> */}
+    {/* <Separator/> */}
+    {/* <ApiList entityIdName="billboards" entityName="billboardId"/> */}
     </>
   );
 };

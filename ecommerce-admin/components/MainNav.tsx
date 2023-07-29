@@ -53,7 +53,7 @@ const MainNav = ({ className, ...props }: React.HtmlHTMLAttributes<HTMLElement>)
   ];
 
   return (
-    <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
+    <nav className={cn("flex items-center justify-center space-x-4 lg:space-x-6", className)}>
       {routes.map((route) => (
         <Link
           key={route.href}
