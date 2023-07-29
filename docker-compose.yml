@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  e-commerce-admin:
+    build:
+      context: ecommerce-admin/
+      dockerfile: Dockerfile
+    container_name: e-commerce-admin
+    restart: on-failure
+    depends_on:
+      - mysql
+    ports:
+      - 3000:3000
+    networks:
+      - backend
+  e-commerce-store:
+    build: ecommerce-store/
+    container_name: e-commerce-store
+    depends_on:
+      - e-commerce-admin
+    restart: on-failure
+    ports:
+      - 3001:3001
+  mysql:
+    image: mysql:5.7
+    container_name: my_mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: ecommerce
+      MYSQL_PASSWORD: pass123
+      MYSQL_ROOT_PASSWORD: pass123
+    ports:
+      - 3307:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - backend
+# Names our volume
+volumes:
+  db_data:
+
+
+networks:
+  backend:
