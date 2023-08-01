@@ -1,42 +1,46 @@
-version: '3.8'
+version: "3.8"
+
 services:
-  e-commerce-admin:
-    build:
-      context: ecommerce-admin/
-      dockerfile: Dockerfile
-    container_name: e-commerce-admin
-    restart: on-failure
+  store:
+    build: ecommerce-store
+    container_name: store
     depends_on:
-      - mysql
-    ports:
-      - 3000:3000
-    networks:
-      - backend
-  e-commerce-store:
-    build: ecommerce-store/
-    container_name: e-commerce-store
-    depends_on:
-      - e-commerce-admin
-    restart: on-failure
+      - admin
     ports:
       - 3001:3001
+    volumes:
+      - ./ecommerce-store:/store
+    networks:
+      - db
+  admin:
+    build: ecommerce-admin
+    container_name: admin
+    depends_on:
+      - mysql
+    # environment:
+    #   DATABASE_URL: mysql://root:pass123@db:3306/ecommerce?schema=public
+    ports:
+      - 3000:3000
+    volumes:
+      - ./ecommerce-admin:/admin
+    networks:
+      - db
   mysql:
-    image: mysql:5.7
-    container_name: my_mysql
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
+      MYSQL_ROOT_PASSWORD: 'pass123' # TODO: Change this
       MYSQL_DATABASE: ecommerce
-      MYSQL_PASSWORD: pass123
-      MYSQL_ROOT_PASSWORD: pass123
+      MYSQL_USER: 'testUser'
+      MYSQL_PASS: 'pass1234'
     ports:
-      - 3307:3306
+      - 3306:3306
     volumes:
-      - db_data:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     networks:
-      - backend
-# Names our volume
-volumes:
-  db_data:
+      - db
 
 networks:
-  backend:
+  db:

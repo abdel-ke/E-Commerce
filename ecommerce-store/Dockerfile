@@ -1,17 +1,13 @@
 FROM node:18-alpine
 
-# Create app directory, this is in our container/in our image
-WORKDIR /usr/src/e-commerce-store
+WORKDIR /store
 
-# Bundle app source
-ADD ./ ./
+COPY package*.json .
 
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
 
-# Build the Next.js app for production
-RUN npm run build
+COPY . .
 
-# Start the Next.js app
-CMD ["npm", "run", "start"]
+EXPOSE 3001
+
+CMD [ "npm", "run", "dev" ]
