@@ -23,7 +23,8 @@ services:
       - ./ecommerce-admin:/admin
     networks:
       - db
-    entrypoint: npx prisma db push
+    # command: ["npx", "prisma", "db", "push"]
+    command: ["./script.sh"]
   mysql:
     image: mysql
     container_name: mysql
@@ -32,13 +33,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 'pass123' # TODO: Change this
       MYSQL_DATABASE: ecommerce
-      MYSQL_USER: 'testUser'
-      MYSQL_PASS: 'pass1234'
     ports:
-      - 3307:3306
+      - 3306:3306
     expose:
       - 3306
-      - 3307
     volumes:
       - mysql:/var/lib/mysql
     networks:
