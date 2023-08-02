@@ -17,14 +17,13 @@ services:
     container_name: admin
     depends_on:
       - mysql
-    # environment:
-    #   DATABASE_URL: mysql://root:pass123@db:3306/ecommerce?schema=public
     ports:
       - 3000:3000
     volumes:
       - ./ecommerce-admin:/admin
     networks:
       - db
+    entrypoint: npx prisma db push
   mysql:
     image: mysql
     container_name: mysql
@@ -36,11 +35,17 @@ services:
       MYSQL_USER: 'testUser'
       MYSQL_PASS: 'pass1234'
     ports:
-      - 3306:3306
+      - 3307:3306
+    expose:
+      - 3306
+      - 3307
     volumes:
-      - ./mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
     networks:
       - db
 
 networks:
   db:
+
+volumes:
+  mysql:

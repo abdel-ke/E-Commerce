@@ -5,8 +5,12 @@ WORKDIR /admin
 COPY package*.json .
 RUN npm install
 
+COPY prisma .
 RUN npx prisma generate
+
 COPY . .
+
+# RUN npx prisma db push
 
 EXPOSE 3000
 
